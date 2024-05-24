@@ -1,0 +1,14 @@
+@keyframes blink {
+    0% { opacity: 2; }
+    50% { opacity: 0; }
+    100% { opacity: 5; }
+  }
+  
+  .listening {
+    animation: blink 1s infinite;
+  }
+  
+  .speaking {
+    animation: blink 1s infinite;
+  }
+  

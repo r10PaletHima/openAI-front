@@ -1,0 +1,11 @@
+.outputDisplay{
+    height: 100%;
+    width: 100%;
+    padding: 0% 20% 2% 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+    max-height: 75vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}

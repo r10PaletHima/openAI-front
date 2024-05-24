@@ -1,0 +1,4 @@
+export {
+    getTextGeneration
+} 
+from "./commonApi"

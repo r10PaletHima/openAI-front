@@ -1,0 +1,31 @@
+.newChatPage {
+    height: 90%;
+    display: flex;
+    justify-content: center;    
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.searchBarContainer{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    background-color: '#e9e8e8';
+    border-radius: 60px;
+}
+
+.searchBarContainerMain{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.noteInfo{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: small;
+    margin-top: 10px;
+    color: grey;
+}

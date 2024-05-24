@@ -24,7 +24,7 @@ const SearchBar = () => {
         console.log("textEntered", event.target.value);
         dispatch(setText(event.target.value));
     };
-
+    
     const handleKeyDown = async (event) => {
         if (event.key === 'Enter') {
             dispatch(setStopLoad(false));
@@ -98,7 +98,7 @@ const SearchBar = () => {
 
     const handleTextToVoice = () => {
         if (speaking) {
-            speechSynthesis.pause();
+            speechSynthesis.cancel(); // Stop the speech synthesis
             setSpeaking(false);
         } else {
             setSpeaking(true);

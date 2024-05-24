@@ -13,8 +13,8 @@ const axiosInstance = axios.create({
 
 // Function to handle errors and display toast notifications
 const handleError = (error) => {
-  const errorMessage = error.error || 'An error occurred';
-  toast.error(errorMessage); // Display toast notification for the error
+  const errorMessage = error.response?.data?.error || 'An error occurred';
+  alert(errorMessage); // Display toast notification for the error
   return Promise.reject(error);
 };
 
@@ -25,7 +25,9 @@ axiosInstance.interceptors.request.use(
     // e.g., add a token to headers
     // const token = localStorage.getItem('token'); // Assuming you're using localStorage for token
     
-    // config.headers.Authorization = `Bearer ${token}`;  
+    // if (token) {
+    //   config.headers.Authorization = `Bearer ${token}`;  
+    // }
 
     return config;
   },
@@ -47,7 +49,38 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export const getAPICall = async (url, data) => await axiosInstance.get(url, data).catch(handleError);
-export const postAPICall = async (url, data) => await axiosInstance.post(url, data).catch(handleError);
-export const putAPICall = async (url, data) => await axiosInstance.put(url, data).catch(handleError);
-export const deleteAPICall = async (url, data) => await axiosInstance.delete(url, data).catch(handleError);
+export const getAPICall = async (endpoint, params) => {
+  try {
+    const response = await axiosInstance.get(endpoint, { params });
+    return response.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const postAPICall = async (endpoint, data) => {
+  try {
+    const response = await axiosInstance.post(endpoint, data);
+    return response;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const putAPICall = async (endpoint, data) => {
+  try {
+    const response = await axiosInstance.put(endpoint, data);
+    return response;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const deleteAPICall = async (endpoint, data) => {
+  try {
+    const response = await axiosInstance.delete(endpoint, { data });
+    return response;
+  } catch (error) {
+    return handleError(error);
+  }
+};

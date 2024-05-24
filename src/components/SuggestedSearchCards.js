@@ -10,6 +10,7 @@ import { setStopLoad, setText, updateInputValue } from '../store/inputTextSlice'
 import { getTextGeneration } from '../api';
 
 const BasicCard = ({ search, icon }) => {
+    console.log("search",search)
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -18,9 +19,11 @@ const BasicCard = ({ search, icon }) => {
         try {
             const content = await getTextGeneration({
                 prompt: search
-            });            
-            if (content && content.data.completion && content.data.completion[0] && content.data.completion[0].generated_text) {
-                dispatch(updateInputValue([search, content.data.completion[0].generated_text]))
+            });  
+            console.log("content", content)          
+            if (content && content.data.completion) {
+                dispatch(updateInputValue([search, content.data.completion]))
+                console.log("hhhh",[search, content.data.completion])
                 dispatch(setText(""))
             } else {
                 console.error('Unexpected response structure:', content);

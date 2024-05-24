@@ -9,11 +9,6 @@ const OutputContentDisplay = () => {
     const [scrollToBottom, setScrollToBottom] = useState(false);
     const [displayedText, setDisplayedText] = useState("");
     let inputText = useSelector(state => state.inputText.value)
-    const isSelected = useSelector(state=>state.inputText.isSelected)
-    if(isSelected){
-        inputText = [inputText[isSelected-1], inputText[isSelected]]
-        console.log("input", inputText)
-    }
     useEffect(() => {
         if (scrollToBottom) {
             const element = document.getElementById("outputContent");
